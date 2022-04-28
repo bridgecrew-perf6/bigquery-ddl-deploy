@@ -127,7 +127,7 @@ def deploy(google_project_id, ddl_folder_path, hash_store_user, hash_store_passw
     for ddl_file in ddl_files:
         sql = get_sql(ddl_file)
         if hash_store.matches_saved_hash(ddl_file, sql):
-            logging.info("Skipping file %s. Matches saved file hash.", ddl_file)
+            logging.warning("Skipping file %s. Matches saved file hash.", ddl_file)
             continue
         try:
             logging.info("Executing file %s.", ddl_file)
@@ -152,7 +152,7 @@ def get_sql(sql_file):
         return sql
 
 def execute_sql(sql, google_project_id):
-    logging.info("Executing sql: %s", sql)
+    logging.warning("Executing sql: %s", sql)
     bq_cmd = [
         "bq", "query",
         "--use_legacy_sql=false",

@@ -1,0 +1,21 @@
+name: 'Deploy BigQuery DDL Action'
+description: 'This action hashes DDL files and executes them'
+author: 'Pinaki Das'
+
+inputs:
+    google_project_id:
+      description: 'Project ID in GCP'
+      required: true
+    ddl_folder_path:
+      description: 'Folder path that includes DDL'
+      required: true
+    mongo_user:
+      description: 'Mongo Username'
+      required: true
+    mongo_password:
+      description: 'Mongo Password'
+      required: true
+
+runs:
+    using: 'docker'
+    image: 'Dockerfile'

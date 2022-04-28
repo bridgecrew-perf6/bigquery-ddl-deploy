@@ -113,11 +113,11 @@ class ProjectRepoHashes:
             self.collection.insert_one(self.hashes)
 
 def deploy(google_project_id, ddl_folder_path, hash_store_user, hash_store_password):
-    repo_owner_name = os.environ["REPO_AND_OWNER_NAME"].split('/', 1)
+    # repo_owner_name = os.environ["REPO_AND_OWNER_NAME"].split('/', 1)
 
     hash_store = ProjectRepoHashes(
-        project_name=repo_owner_name[0],
-        repo_name=repo_owner_name[1],
+        project_name=os.environ["GITHUB_REPOSITORY_OWNER"],
+        repo_name=os.environ["GITHUB_REPOSITORY"],
         google_project_id=google_project_id,
         hash_store_user=hash_store_user,
         hash_store_password=hash_store_password,

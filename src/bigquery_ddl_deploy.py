@@ -117,7 +117,7 @@ def deploy(google_project_id, ddl_folder_path, hash_store_user, hash_store_passw
 
     hash_store = ProjectRepoHashes(
         project_name=os.environ["GITHUB_REPOSITORY_OWNER"],
-        repo_name=os.environ["GITHUB_REPOSITORY"],
+        repo_name=os.environ["GITHUB_REPOSITORY"].split('/', 1),
         google_project_id=google_project_id,
         hash_store_user=hash_store_user,
         hash_store_password=hash_store_password,
@@ -152,6 +152,7 @@ def get_sql(sql_file):
         return sql
 
 def execute_sql(sql, google_project_id):
+    logging.info("Executing sql: %s", sql)
     bq_cmd = [
         "bq", "query",
         "--use_legacy_sql=false",

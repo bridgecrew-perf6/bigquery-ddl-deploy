@@ -9,10 +9,10 @@ inputs:
     ddl_folder_path:
       description: 'Folder path that includes DDL'
       required: true
-    mongo_user:
+    hadoop_mongo_user:
       description: 'Mongo Username'
       required: true
-    mongo_password:
+    hadoop_mongo_password:
       description: 'Mongo Password'
       required: true
 
